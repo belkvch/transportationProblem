@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&display=swap');
+
+.Row {
+    background-color: lavender;
+}
+
+.Column {
+    background-color: lightblue;
+}
+
+.None {
+    background-color: #ffffff;
+}
+
+input[type="number"]:disabled { color: transparent; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*.Box {*/
+/*    opacity: 0.7;*/
+/*    width:700px; !* Ширина блока *!*/
+/*    height: 200px; !* Высота блока *!*/
+/*    background-color: #e9f9ff; !* Фоновый цвет*!*/
+/*    border: 1px solid #000000; !* Ширина и цвет границ*!*/
+/*    border-radius: 10px; !* Радиус границ*!*/
+/*    !*box-shadow: 0 0 10px #cbe6f8;*!*/
+/*}*/
+
+.BoxWhite {
+    width:700px; /* Ширина блока */
+    height: 200px; /* Высота блока */
+    background-color: white; /* Фоновый цвет*/
+    border: 1px solid #000000; /* Ширина и цвет границ*/
+    border-radius: 10px; /* Радиус границ*/
+    /*box-shadow: 0 0 10px #b5e1ff;*/
+}
+
+.Font {
+    font-family: 'Montserrat', sans-serif;
+}
+

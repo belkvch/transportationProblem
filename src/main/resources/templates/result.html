@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Result</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" th:href="@{/css/main.css}"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<br>
+<center>
+    <div th:object="${rowsAmount}">
+        <h4 class="Font">Заданная таблица:</h4>
+        <div class="form-group">
+            <th:block th:each="matrix, iter : ${matrices}">
+                <label>
+                    <input type="text" class="form-control" th:value="${matrix.getId() !=0}? ${matrix.value} : ''"
+                           disabled
+                           th:style="${matrix.isColor()} == true ? 'background-color: lightblue; margin: 2px' : 'background-color: white; margin: 2px'"/>
+                </label>
+                <br th:if="${(iter.index + 1) % rowsAmount == 0}"/>
+            </th:block>
+        </div>
+    </div>
+</center>
+
+<br>
+
+<div style="text-align: center;">
+    <div style="display: inline-block;
+     border-right-color: #000000;
+    border-right-width: 1px;
+     border-right-style: solid;
+    margin-right: 5px; text-align: left;">
+
+
+        <h5 class="Font" style="margin-right: 10px">Vogel's Approximation Method Result: </h5>
+        <span class="Font" th:utext="*{vogelResult}"></span>
+        <p class="Font"><span class="Font" th:utext="*{vogelTimer}"> </span> microsecond </p>
+
+        <h5 class="Font">Least Call Cell Method Result: </h5>
+        <span class="Font" th:utext="*{minimumCostResult}"></span>
+        <p class="Font"><span class="Font" th:utext="*{minimumCostTimer}"> </span> microsecond </p>
+    </div>
+
+
+
+    <div style="display: inline-block; text-align: right;">
+        <h5 class="Font">NorthWest Corner Cell Method Result: </h5>
+        <span class="Font" th:utext="*{northCostResult}"></span>
+        <p class="Font"><span class="Font" th:utext="*{northWestTimer}"> </span> microsecond </p>
+
+        <h5 class="Font">Method Of Potentials Result: </h5>
+        <span class="Font" th:utext="*{northPotCostResult}"></span>
+        <p class="Font"><span class="Font" th:utext="*{northWestPotTimer}"> </span> microsecond </p>
+    </div>
+</div>
+
+<center>
+    <div th:object="${rowsAmount}">
+        <h4 class="Font">Оптимальный план:</h4>
+        <div class="form-group">
+            <th:block th:each="matrixW, iterW : ${northWestPotMatrix}">
+                <label>
+                    <input type="text" class="form-control" th:value="${matrixW}" disabled/>
+                </label>
+                <br th:if="${(iterW.index + 1) % (rowsAmount - 1) == 0}"/>
+            </th:block>
+        </div>
+    </div>
+</center>
+
+<br>
+<center>
+<a href="/start" style="margin: 2px" class="btn btn-outline-info">New table</a>
+</center>
+
+</body>
+</html>
